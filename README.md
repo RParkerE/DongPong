@@ -7,6 +7,7 @@ DongPong is an interactive game that utilizes Python, OpenCV, and MediaPipe to d
 - Python 3.x
 - OpenCV
 - MediaPipe
+- Numpy
 
 ## Installation
 
