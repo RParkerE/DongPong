@@ -28,8 +28,12 @@ class Dong:
             seg2 = Joint((int(prevJoints[0].position[0] - 20 * np.sin(self.theta[1])), int(prevJoints[0].position[1] + 20 * np.cos(self.theta[1]))), 5)
             seg3 = Joint((int(prevJoints[1].position[0] - 20 * np.sin(self.theta[2])), int(prevJoints[1].position[1] + 20 * np.cos(self.theta[2]))), 5)
             self.draw(canvas, [seg1, seg2, seg3])
+
+            # Calculate velocity based on movement from previous frame
+            self.velocity = ((self.anchor.position[0] - prevAnchor.position[0]) / dt, (self.anchor.position[1] - prevAnchor.position[1]) / dt)
         else:
             self.draw(canvas, self.joints)
+            self.velocity = (0, 0)  # Initial velocity is zero
 
     def draw(self, canvas, joints):
         for joint in joints:

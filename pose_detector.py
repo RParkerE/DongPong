@@ -72,7 +72,12 @@ class poseDetector():
         return angle
 
     def getDongPosition(self, img):
-        left_hip = self.lmList[23][1:]
-        right_hip = self.lmList[24][1:]
-        dong = (int((left_hip[0] + right_hip[0]) / 2), int((left_hip[1] + right_hip[1]) / 2))
-        return dong
+        # Check if lmList is not empty and contains enough elements
+        if self.lmList and len(self.lmList) >= 25:
+            left_hip = self.lmList[23][1:]
+            right_hip = self.lmList[24][1:]
+            dong = (int((left_hip[0] + right_hip[0]) / 2), int((left_hip[1] + right_hip[1]) / 2))
+            return dong
+        else:
+            # Return None if lmList is empty or doesn't contain enough elements
+            return None
